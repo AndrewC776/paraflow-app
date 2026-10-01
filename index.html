@@ -1580,9 +1580,6 @@ new ResizeObserver(() => {
   lastW = w; lastH = h;
 }).observe(svg);
 
-function setLang(l){
-  LANG = l; try { localStorage.setItem(LANG_KEY, l); } catch(e) {}
-  
 /* ======================= 装修挑战：游戏层 ======================= */
 function gameSpent(){
   return (state?.furniture || []).reduce((sum,f) => sum + (f.price || priceFor(f.type,f.name)), 0);
@@ -1757,6 +1754,10 @@ function gameInit(){
   else gameUpdateHUD();
 }
 
+
+function setLang(l){
+  LANG = l; try { localStorage.setItem(LANG_KEY, l); } catch(e) {}
+  
 applyStaticLang(); syncFullscreen(); syncModeHint(); syncPaneBtns();
   buildLib(); renderOpenings(); renderAll();
   $('#tip').textContent = TIPS()[viewMode];
